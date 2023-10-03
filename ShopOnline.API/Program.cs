@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ShopOnline.API.Data;
+using ShopOnline.API.Repositories;
+using ShopOnline.API.Repositories.Contracts;
 
 namespace ShopOnline.API
 {
@@ -22,6 +24,7 @@ namespace ShopOnline.API
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
 
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
